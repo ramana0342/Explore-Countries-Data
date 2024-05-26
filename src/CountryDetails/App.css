@@ -1,0 +1,20 @@
+.SearchBar{
+    width: 50%;
+    margin-top: 40px;
+}
+.Country-Cards{
+    margin-top: 30px;
+}
+.country-flag{
+    height: 180px; 
+    object-fit: cover; 
+    width: 100%;
+   
+}
+.ListGroup{
+    width: 50%;
+    max-height: 200px; /* Adjust the height as needed */
+    overflow-y: auto;
+        
+    
+}
