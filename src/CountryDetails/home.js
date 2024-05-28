@@ -1,11 +1,10 @@
 
-import { useState,useEffect } from "react"
-import axios from "axios";
+import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import "./App.css"
 
 
-const Home=({countryData,setCountryData})=>{
+const Home=({countryData})=>{
 
     const navigate=useNavigate()
        
@@ -13,12 +12,7 @@ const Home=({countryData,setCountryData})=>{
     const[searchText,setSearchText] = useState("");
     const[filterCountryData,setfilterCountryData] = useState([])
     
-    useEffect(()=>{
-           axios.get("https://restcountries.com/v3.1/all").then((res)=>{
-            console.log(res.data)
-             setCountryData(res.data)
-           })
-    },[])
+    
 
     const handleChange=()=>{
     let SearchData=countryData.filter((item,index)=>{
@@ -75,15 +69,15 @@ const Home=({countryData,setCountryData})=>{
        {countryData.map((item,index)=>{
            return(<>
 
-                <div class="col">
-                <div class="card h-100" onClick={()=>{navigate(`/CountryDetails/${item.name.common}`)}}>
+                <div className="col CountryHomeCard">
+                <div className="card h-100" onClick={()=>{navigate(`/CountryDetails/${item.name.common}`)}}>
                     <img src={item.flags.svg} class="card-img-top country-flag" alt="..."/>  
                 <div class="card-body">
                     <h5 class="card-title">Country :{item.name.common}</h5>
                     <p class="card-title">Official Name: <b> {item.name.official}</b></p>
                     <p class="card-text">Capital: <b>{item.capital}</b></p>
                     {item.languages && (<p className="card-text">Languages: <b>{Object.values(item.languages).join(', ')}</b></p>)}
-                    <p class="card-text"><a href={item.maps.googleMaps}>Google Maps Location</a></p>
+                    <p class="card-text">Region:<b>{item.region}</b></p>
                   </div>
                 </div>
               </div>
